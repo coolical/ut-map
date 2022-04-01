@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <ImageButton
+        android:id="@+id/restaurants"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/restaurants"
+        tools:ignore="ContentDescription" />
+
+
+
+    <ImageButton
+        android:id="@+id/gas"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/gas"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/groceries"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/groceries"
+        android:contentDescription="TODO" />
+
+    <ImageButton
+        android:id="@+id/coffee"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/coffee"
+        android:contentDescription="TODO" />
+
+    <ImageButton
+        android:id="@+id/takeout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/takeout"
+        android:contentDescription="TODO" />
+
+    <ImageButton
+        android:id="@+id/pharmacies"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/pharmacies"
+        android:contentDescription="TODO" />
+
+    <ImageButton
+        android:id="@+id/hotels"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/hotels"
+        android:contentDescription="TODO" />
+
+
+
+    <ImageView
+        android:id ="@+id/image_item"
+        android:layout_width="match_parent"
+        android:layout_height="194dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop" />
+</LinearLayout>
