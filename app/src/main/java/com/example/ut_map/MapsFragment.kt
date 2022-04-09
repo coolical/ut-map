@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.ut_map.data.LocationData
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -21,14 +22,19 @@ class MapsFragment : Fragment() {
          * Manipulates the map once available.
          * This callback is triggered when the map is ready to be used.
          * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
          * If Google Play services is not installed on the device, the user will be prompted to
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
-        val sydney = LatLng(-34.0, 151.0)
+
         googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val tower = LatLng(30.28565, -97.73921)
+        for (location in LocationData.locations){
+            val position = LatLng(location.lat, location.long)
+            googleMap.addMarker(MarkerOptions().position(position).title(location.name))
+        }
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tower, 15F))
     }
 
     override fun onCreateView(
