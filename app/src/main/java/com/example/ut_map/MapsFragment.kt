@@ -27,7 +27,6 @@ class MapsFragment : Fragment() {
          * user has installed Google Play services and returned to the app.
          */
 
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         val tower = LatLng(30.28565, -97.73921)
         for (location in LocationData.locations){
             val position = LatLng(location.lat, location.long)
