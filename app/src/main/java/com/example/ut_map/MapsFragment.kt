@@ -6,10 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.ut_map.data.LocationData
+import com.example.ut_map.data.DataSource
 
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
@@ -28,7 +27,7 @@ class MapsFragment : Fragment() {
          */
 
         val tower = LatLng(30.28565, -97.73921)
-        for (location in LocationData.locations){
+        for (location in DataSource.locations){
             val position = LatLng(location.lat, location.long)
             googleMap.addMarker(MarkerOptions().position(position).title(location.name))
         }
