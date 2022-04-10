@@ -5,5 +5,5 @@ data class Location(
     val lat: Double,
     val long: Double,
     val tags: List<String>,
-    var visibility: Boolean = false
+    var visibility: Boolean = true
 )

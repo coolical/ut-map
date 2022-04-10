@@ -216,7 +216,20 @@ object DataSource {
                     30.28718,
                     -97.73655,
                     listOf("academic")
+                ),
+                Location(
+                    "J2 Dinning Hall",
+                    30.2828,
+                    -97.7369,
+                    listOf("Dinning Hall")
+                ),
+                Location(
+                    "Kinsolving Dinning Hall",
+                    30.2902,
+                    -97.7397,
+                    listOf("Dinning Hall")
                 )
+
             )
         ),
         Category(
@@ -248,6 +261,25 @@ object DataSource {
                     listOf("museum")
                 )
             )
+        ),
+        Category(
+            R.drawable.ic_baseline_local_dining_24,
+            "Dinning Hall",
+            listOf(
+                Location(
+                    "J2 Dinning Hall",
+                    30.2828,
+                    -97.7369,
+                    listOf("Dinning Hall")
+                ),
+                Location(
+                    "Kinsolving Dinning Hall",
+                    30.2902,
+                    -97.7397,
+                    listOf("Dinning Hall")
+                )
+            )
         )
+
     )
 }
