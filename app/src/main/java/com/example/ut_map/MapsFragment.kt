@@ -1,21 +1,20 @@
 package com.example.ut_map
 
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.ut_map.data.DataSource
-
+import androidx.fragment.app.Fragment
+import com.example.ut_map.data.DataSource.categories
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsFragment : Fragment() {
-
+    private var markers: MutableList<Marker?> = mutableListOf()
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.
@@ -25,13 +24,16 @@ class MapsFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
-
-        val tower = LatLng(30.28565, -97.73921)
-        for (location in DataSource.locations){
-            val position = LatLng(location.lat, location.long)
-            googleMap.addMarker(MarkerOptions().position(position).title(location.name))
+        for (marker in markers){
+            marker?.isVisible = false
         }
-
+        val tower = LatLng(30.28565, -97.73921)
+        for (category in categories){
+            for (location in category.list){
+                val position = LatLng(location.lat, location.long)
+                markers.add(googleMap.addMarker(MarkerOptions().position(position).title(location.name).visible(location.visibility)))
+            }
+        }
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tower, 15F))
     }
 

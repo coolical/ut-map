@@ -11,4 +11,5 @@
     <string name="title_categories">Categories</string>
     <string name="about_content">UT Map is a project created in CS 329E Mobile Computing course for our final project to demonstrate what is learned throughout the course. Members include Kevin Woo and Abraham Romero.</string>
     <string name="about_links">Github:\n https://github.com/coolical/ut-map//</string>
+    <string name="button_text">Toggle On/ Off</string>
 </resources>
