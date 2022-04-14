@@ -36,16 +36,20 @@ class MapsFragment : Fragment() {
         }
         val tower = LatLng(30.28565, -97.73921)
         var index = 0
+        val builder = LatLngBounds.Builder()
         for (category in categories){
             for (location in category.list){
                 val position = LatLng(location.lat, location.long)
                 markers.add(googleMap.addMarker(MarkerOptions().position(position).title(location.name).visible(location.visibility).icon(
                     vectorToBitmap(category.imageResourceID, resources.getColor(colors[index]))
                 )))
+                builder.include(position)
             }
             index++
         }
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(tower, 15F))
+        val bounds = builder.build()
+        googleMap.setLatLngBoundsForCameraTarget(bounds)
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.center, 15F))
     }
 
     override fun onCreateView(
