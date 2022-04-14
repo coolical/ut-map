@@ -3,13 +3,14 @@ package com.example.ut_map
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ut_map.data.DataSource.categories
 import com.example.ut_map.databinding.FragmentItemBinding
 import com.example.ut_map.model.Category
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 /**
  * [RecyclerView.Adapter] that can display a category from [categories].
@@ -37,12 +38,19 @@ class MyCategoryRecyclerViewAdapter(
         val item = values[position]
         holder.contentView.text = item.name
         holder.imageView.setImageResource(item.imageResourceID)
+        if (item.toggle == false){
+            holder.button.toggle()
+            holder.button.text = resources?.getString(R.string.button_text_off)
+        }
         holder.button.setOnClickListener{
             for (category in categories){
                 if (category.name == item.name){
+                    category.toggle = !category.toggle
                     for (location in category.list){
                         location.visibility = !location.visibility
                     }
+                    Toast.makeText(context, resources?.getString(R.string.button_onToggle, item.name), Toast.LENGTH_SHORT).show()
+
                 }
             }
         }
@@ -51,10 +59,9 @@ class MyCategoryRecyclerViewAdapter(
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(binding: FragmentItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        //val idView: TextView = binding.itemNumber
         val contentView: TextView = binding.content
         val imageView: ImageView = binding.imageView
-        val button: Button = binding.button
+        val button: SwitchMaterial = binding.button
     }
 
 }

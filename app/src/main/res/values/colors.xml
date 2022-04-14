@@ -11,5 +11,10 @@
     <color name="dark_gray">#333F48</color>
     <color name="orange">#F8971F</color>
     <color name="grey">#d6d2c4</color>
-
+    <color name="yellow">#ffd600</color>
+    <color name="light_green">#a6cd57</color>
+    <color name="green">#579d42</color>
+    <color name="teal">#00a9b7</color>
+    <color name="navy_blue">#005f86</color>
+    <color name="blue_grey">#9cadb7</color>
 </resources>
