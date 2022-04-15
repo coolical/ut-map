@@ -178,11 +178,6 @@ object DataSource {
                     listOf("academic")
                 ),
                 Location(
-                    "Performing Arts Center",
-                    30.286269462496037, -97.73128496052304,
-                    listOf("academic", "events")
-                ),
-                Location(
                     "McCombs School of Business",
                     30.284294517312823,
                     -97.73760828662783,
