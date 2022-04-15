@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ut_map.data.DataSource.categories
-import com.example.ut_map.databinding.FragmentItemBinding
+import com.example.ut_map.databinding.FragmentCategoryBinding
 import com.example.ut_map.model.Category
 import com.google.android.material.switchmaterial.SwitchMaterial
 
@@ -24,7 +24,7 @@ class MyCategoryRecyclerViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
-            FragmentItemBinding.inflate(
+            FragmentCategoryBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -58,7 +58,7 @@ class MyCategoryRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(binding: FragmentCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
         val contentView: TextView = binding.content
         val imageView: ImageView = binding.imageView
         val button: SwitchMaterial = binding.button

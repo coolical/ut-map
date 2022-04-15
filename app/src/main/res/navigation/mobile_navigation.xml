@@ -19,5 +19,5 @@
         android:id="@+id/categoryFragment"
         android:name="com.example.ut_map.CategoryFragment"
         android:label="@string/title_categories"
-        tools:layout="@layout/fragment_item_list" />
+        tools:layout="@layout/fragment_category_list" />
 </navigation>

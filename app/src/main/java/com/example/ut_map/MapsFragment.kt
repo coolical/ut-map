@@ -1,5 +1,8 @@
 package com.example.ut_map
 
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
@@ -7,6 +10,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.core.content.res.ResourcesCompat
@@ -14,6 +19,7 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import com.example.ut_map.data.DataSource.categories
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
@@ -22,6 +28,20 @@ import com.google.android.gms.maps.model.*
 class MapsFragment : Fragment() {
     private var markers: MutableList<Marker?> = mutableListOf()
     private val colors: List<Int> = listOf<Int>(R.color.burnt_orange, R.color.dark_gray, R.color.orange, R.color.yellow, R.color.light_green, R.color.green, R.color.teal, R.color.navy_blue, R.color.blue_grey)
+    private lateinit var map: GoogleMap
+    @SuppressLint("MissingPermission")
+    private var activityResultLauncher: ActivityResultLauncher<Array<String>> =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()) { result ->
+            var allAreGranted = true
+            for(b in result.values){
+                allAreGranted = allAreGranted && b
+            }
+
+            if (allAreGranted){
+                map.isMyLocationEnabled = true
+            }
+        }
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.
@@ -31,10 +51,10 @@ class MapsFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
+        map = googleMap
         for (marker in markers){
             marker?.isVisible = false
         }
-        val tower = LatLng(30.28565, -97.73921)
         var index = 0
         val builder = LatLngBounds.Builder()
         for (category in categories){
@@ -64,6 +84,7 @@ class MapsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+        activityResultLauncher.launch(arrayOf(ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION))
     }
 
     /**
@@ -82,4 +103,5 @@ class MapsFragment : Fragment() {
         vectorDrawable.draw(canvas)
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
+
 }
