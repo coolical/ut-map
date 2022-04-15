@@ -54,6 +54,7 @@ class MapsFragment : Fragment() {
         map = googleMap
         for (marker in markers){
             marker?.isVisible = false
+            marker?.remove()
         }
         var index = 0
         val builder = LatLngBounds.Builder()
