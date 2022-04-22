@@ -43,6 +43,12 @@ class MyCategoryRecyclerViewAdapter(
             holder.button.text = resources?.getString(R.string.button_text_off)
         }
         holder.button.setOnClickListener{
+            if (item.toggle == false){
+                holder.button.text = resources?.getString(R.string.button_text_on)
+            }
+            else{
+                holder.button.text = resources?.getString(R.string.button_text_off)
+            }
             for (category in categories){
                 if (category.name == item.name){
                     category.toggle = !category.toggle
