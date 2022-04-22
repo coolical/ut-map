@@ -135,6 +135,11 @@ object DataSource {
             listOf("Dinning Hall")
         ),
         Location(
+            "Perry-Castañeda Library",
+            30.28282424926724, -97.73824008848051,
+            listOf("library")
+        ),
+        Location(
             "Architecture & Planning Library",
             30.28543186860742, -97.74044567911712,
             listOf("library")
@@ -142,6 +147,46 @@ object DataSource {
         Location(
             "Life Science Library",
             30.28630048514125, -97.73939807401473,
+            listOf("library")
+        ),
+        Location(
+            "Mallet Chemistry Library",
+            30.286865829324743, -97.73780830197215,
+            listOf("library")
+        ),
+        Location(
+            "Classics Library",
+            30.285223597693644, -97.73773571916931,
+            listOf("library")
+        ),
+        Location(
+            "Walter Geology Library",
+            30.28611486646582, -97.73570407313608,
+            listOf("library")
+        ),
+        Location(
+            "Collections Deposit Library",
+            30.27909200353985, -97.7330234596445,
+            listOf("library")
+        ),
+        Location(
+            "LLILAS Benson Latin American Studies and Collections",
+            30.284002335815607, -97.72927804430005,
+            listOf("library")
+        ),
+        Location(
+            "Fine Arts Library",
+            30.28630508620641, -97.73169535779166,
+            listOf("library")
+        ),
+        Location(
+            "McKinney Engineering Library",
+            30.288160511469933, -97.73556882658004,
+            listOf("library")
+        ),
+        Location(
+            "Kuehne Physics Mathematics Astronomy Library",
+            30.28914422438757, -97.73651617498872,
             listOf("library")
         )
 

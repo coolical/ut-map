@@ -24,12 +24,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 
-
 class MapsFragment : Fragment() {
     private var markers: MutableList<Marker?> = mutableListOf()
     private val colors: List<Int> = listOf<Int>(R.color.burnt_orange, R.color.dark_gray, R.color.orange,
         R.color.light_green, R.color.green, R.color.teal, R.color.navy_blue, R.color.blue_grey)
     private lateinit var map: GoogleMap
+//    private lateinit var clusterManager: ClusterManager<ClusterMarker>
     @SuppressLint("MissingPermission")
     private var activityResultLauncher: ActivityResultLauncher<Array<String>> =
         registerForActivityResult(
@@ -53,6 +53,9 @@ class MapsFragment : Fragment() {
          * user has installed Google Play services and returned to the app.
          */
         map = googleMap
+//        clusterManager = ClusterManager(context, map)
+//        map.setOnCameraIdleListener(clusterManager)
+//        map.setOnMarkerClickListener(clusterManager)
         for (marker in markers){
             marker?.isVisible = false
             marker?.remove()
@@ -62,9 +65,11 @@ class MapsFragment : Fragment() {
         for (category in categories){
             for (location in category.list){
                 val position = LatLng(location.lat, location.long)
-                markers.add(map.addMarker(MarkerOptions().position(position).title(location.name).visible(location.visibility).icon(
-                    vectorToBitmap(category.imageResourceID, resources.getColor(colors[index % colors.size]))
-                )))
+                val marker = map.addMarker(MarkerOptions().position(position).title(location.name).visible(location.visibility).icon(
+                    vectorToBitmap(category.imageResourceID, resources.getColor(colors[index % colors.size]))))
+                markers.add(marker)
+//                clusterManager.addItem(ClusterMarker(location.lat,location.long, location.name, ""))
+
                 builder.include(position)
             }
             index++
@@ -87,6 +92,7 @@ class MapsFragment : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
         activityResultLauncher.launch(arrayOf(ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION))
+
     }
 
     /**
@@ -106,4 +112,34 @@ class MapsFragment : Fragment() {
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
 
+//    inner class ClusterMarker(
+//        lat: Double,
+//        long: Double,
+//        title: String,
+//        snippet: String
+//    ): ClusterItem {
+//        private val position: LatLng
+//        private val title: String
+//        private val snippet: String
+//
+//        override fun getPosition(): LatLng {
+//            return position
+//        }
+//
+//        override fun getTitle(): String? {
+//            return title
+//        }
+//
+//        override fun getSnippet(): String? {
+//            return snippet
+//        }
+//
+//        init {
+//            position = LatLng(lat, long)
+//            this.title = title
+//            this.snippet = snippet
+//        }
+//    }
+
 }
+
