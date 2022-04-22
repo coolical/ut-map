@@ -1,7 +1,7 @@
 package com.example.ut_map
 
 import android.content.Context
-import android.content.res.Resources
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -15,13 +15,11 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 
 /**
  * [RecyclerView.Adapter] that can display a category from [categories].
- * TODO: Replace the implementation with code for your data type.
  */
 class MyCategoryRecyclerViewAdapter(
     private val context: Context?,
     private val values: List<Category>
 ) : RecyclerView.Adapter<MyCategoryRecyclerViewAdapter.ViewHolder>() {
-    private  var theme: Resources.Theme? = context?.theme
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             FragmentCategoryBinding.inflate(
@@ -35,11 +33,17 @@ class MyCategoryRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val resources = context?.resources
+        var currentNightMode = resources!!.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val item = values[position]
         holder.contentView.text = item.name
         holder.imageView.setImageResource(item.imageResourceID)
         if (position % 2 == 0){
-            holder.itemView.setBackgroundColor(theme?.resources?.getColor(androidx.appcompat.R.color.primary_material_light) ?: return)
+            if (currentNightMode == Configuration.UI_MODE_NIGHT_NO){
+                holder.itemView.setBackgroundColor(resources?.getColor(R.color.grey) ?: return)
+            }
+            else if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+                holder.itemView.setBackgroundColor(resources?.getColor(R.color.dark_gray) ?: return)
+            }
         }
         if (item.toggle == false){
             holder.button.toggle()
