@@ -10,7 +10,8 @@ object DataSource {
             "PETER O'DONNELL JR. BUILDING",
             30.287005212888587,
             -97.73660177401467,
-            listOf("academic")
+            listOf("academic"),
+            "aces.utexas.edu"
         ),
         Location(
             "Blanton Museum of Art",
@@ -242,7 +243,8 @@ object DataSource {
                     "PETER O'DONNELL JR. BUILDING",
                     30.287005212888587,
                     -97.73660177401467,
-                    listOf("academic")
+                    listOf("academic"),
+                    "aces.utexas.edu"
                 )
 
             )
@@ -294,7 +296,7 @@ object DataSource {
         ),
         Category(
             R.drawable.ic_baseline_local_library_24,
-        "Libraries",
+            "Libraries",
             listOf(
                 Location(
                     "Perry-Castañeda Library",

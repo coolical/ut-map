@@ -26,20 +26,24 @@ import com.google.android.gms.maps.model.*
 
 class MapsFragment : Fragment() {
     private var markers: MutableList<Marker?> = mutableListOf()
-    private val colors: List<Int> = listOf<Int>(R.color.burnt_orange, R.color.dark_gray, R.color.orange,
-        R.color.light_green, R.color.green, R.color.teal, R.color.navy_blue, R.color.blue_grey)
+    private val colors: List<Int> = listOf<Int>(
+        R.color.burnt_orange, R.color.dark_gray, R.color.orange,
+        R.color.light_green, R.color.green, R.color.teal, R.color.navy_blue, R.color.blue_grey
+    )
     private lateinit var map: GoogleMap
-//    private lateinit var clusterManager: ClusterManager<ClusterMarker>
+
+    //    private lateinit var clusterManager: ClusterManager<ClusterMarker>
     @SuppressLint("MissingPermission")
     private var activityResultLauncher: ActivityResultLauncher<Array<String>> =
         registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions()) { result ->
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { result ->
             var allAreGranted = true
-            for(b in result.values){
+            for (b in result.values) {
                 allAreGranted = allAreGranted && b
             }
 
-            if (allAreGranted){
+            if (allAreGranted) {
                 map.isMyLocationEnabled = true
             }
         }
@@ -56,20 +60,26 @@ class MapsFragment : Fragment() {
 //        clusterManager = ClusterManager(context, map)
 //        map.setOnCameraIdleListener(clusterManager)
 //        map.setOnMarkerClickListener(clusterManager)
-        for (marker in markers){
+        for (marker in markers) {
             marker?.isVisible = false
             marker?.remove()
         }
         var index = 0
         val builder = LatLngBounds.Builder()
-        for (category in categories){
-            for (location in category.list){
+        for (category in categories) {
+            for (location in category.list) {
                 val position = LatLng(location.lat, location.long)
-                val marker = map.addMarker(MarkerOptions().position(position).title(location.name).visible(location.visibility).icon(
-                    vectorToBitmap(category.imageResourceID, resources.getColor(colors[index % colors.size]))))
+                val marker = map.addMarker(
+                    MarkerOptions().position(position).title(location.name)
+                        .visible(location.visibility).snippet(location.snippet).icon(
+                            vectorToBitmap(
+                                category.imageResourceID,
+                                resources.getColor(colors[index % colors.size])
+                            )
+                        )
+                )
                 markers.add(marker)
 //                clusterManager.addItem(ClusterMarker(location.lat,location.long, location.name, ""))
-
                 builder.include(position)
             }
             index++

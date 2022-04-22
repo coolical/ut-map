@@ -37,32 +37,34 @@ class MyCategoryRecyclerViewAdapter(
         val item = values[position]
         holder.contentView.text = item.name
         holder.imageView.setImageResource(item.imageResourceID)
-        if (position % 2 == 0){
-            if (currentNightMode == Configuration.UI_MODE_NIGHT_NO){
+        if (position % 2 == 0) {
+            if (currentNightMode == Configuration.UI_MODE_NIGHT_NO) {
                 holder.itemView.setBackgroundColor(resources?.getColor(R.color.grey) ?: return)
-            }
-            else if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            } else if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
                 holder.itemView.setBackgroundColor(resources?.getColor(R.color.dark_gray) ?: return)
             }
         }
-        if (item.toggle == false){
+        if (item.toggle == false) {
             holder.button.toggle()
             holder.button.text = resources?.getString(R.string.button_text_off)
         }
-        holder.button.setOnClickListener{
-            if (item.toggle == false){
+        holder.button.setOnClickListener {
+            if (item.toggle == false) {
                 holder.button.text = resources?.getString(R.string.button_text_on)
-            }
-            else{
+            } else {
                 holder.button.text = resources?.getString(R.string.button_text_off)
             }
-            for (category in categories){
-                if (category.name == item.name){
+            for (category in categories) {
+                if (category.name == item.name) {
                     category.toggle = !category.toggle
-                    for (location in category.list){
+                    for (location in category.list) {
                         location.visibility = !location.visibility
                     }
-                    Toast.makeText(context, resources?.getString(R.string.button_onToggle, item.name), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        resources?.getString(R.string.button_onToggle, item.name),
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                 }
             }
@@ -71,7 +73,8 @@ class MyCategoryRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(binding: FragmentCategoryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         val contentView: TextView = binding.content
         val imageView: ImageView = binding.imageView
         val button: SwitchMaterial = binding.button
