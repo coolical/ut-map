@@ -1,6 +1,7 @@
 package com.example.ut_map
 
 import android.content.Context
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -20,9 +21,8 @@ class MyCategoryRecyclerViewAdapter(
     private val context: Context?,
     private val values: List<Category>
 ) : RecyclerView.Adapter<MyCategoryRecyclerViewAdapter.ViewHolder>() {
-
+    private  var theme: Resources.Theme? = context?.theme
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
         return ViewHolder(
             FragmentCategoryBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -38,6 +38,9 @@ class MyCategoryRecyclerViewAdapter(
         val item = values[position]
         holder.contentView.text = item.name
         holder.imageView.setImageResource(item.imageResourceID)
+        if (position % 2 == 0){
+            holder.itemView.setBackgroundColor(theme?.resources?.getColor(androidx.appcompat.R.color.primary_material_light) ?: return)
+        }
         if (item.toggle == false){
             holder.button.toggle()
             holder.button.text = resources?.getString(R.string.button_text_off)
