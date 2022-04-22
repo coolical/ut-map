@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,6 +65,17 @@ class MapsFragment : Fragment() {
             marker?.isVisible = false
             marker?.remove()
         }
+        try {
+            var success = googleMap.setMapStyle(
+                context?.let { MapStyleOptions.loadRawResourceStyle(it, R.raw.style_json) }
+            )
+            if (!success){
+                Log.e(String::class.toString(), "Style parsing failed.")
+            }
+        } catch (e: Exception) {
+            Log.e(String::class.toString(), "Can't find style. Error: ", e)
+        }
+
         var index = 0
         val builder = LatLngBounds.Builder()
         for (category in categories) {
