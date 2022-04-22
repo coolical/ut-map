@@ -61,7 +61,7 @@ class MapsFragment : Fragment() {
         for (category in categories){
             for (location in category.list){
                 val position = LatLng(location.lat, location.long)
-                markers.add(googleMap.addMarker(MarkerOptions().position(position).title(location.name).visible(location.visibility).icon(
+                markers.add(map.addMarker(MarkerOptions().position(position).title(location.name).visible(location.visibility).icon(
                     vectorToBitmap(category.imageResourceID, resources.getColor(colors[index]))
                 )))
                 builder.include(position)
@@ -69,8 +69,8 @@ class MapsFragment : Fragment() {
             index++
         }
         val bounds = builder.build()
-        googleMap.setLatLngBoundsForCameraTarget(bounds)
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.center, 15F))
+        map.setLatLngBoundsForCameraTarget(bounds)
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.center, 15F))
     }
 
     override fun onCreateView(
