@@ -51,6 +51,15 @@
     ]
   },
   {
+    "featureType": "administrative.locality",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
     "featureType": "landscape.natural",
     "elementType": "geometry",
     "stylers": [
