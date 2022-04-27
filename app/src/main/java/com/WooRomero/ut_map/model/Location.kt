@@ -1,4 +1,4 @@
-package com.example.ut_map.model
+package com.WooRomero.ut_map.model
 
 data class Location(
     val name: String,

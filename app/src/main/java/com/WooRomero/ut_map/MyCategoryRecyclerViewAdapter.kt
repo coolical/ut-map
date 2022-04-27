@@ -1,4 +1,4 @@
-package com.example.ut_map
+package com.WooRomero.ut_map
 
 import android.content.Context
 import android.content.res.Configuration
@@ -8,9 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ut_map.data.DataSource.categories
-import com.example.ut_map.databinding.FragmentCategoryBinding
-import com.example.ut_map.model.Category
+import com.WooRomero.ut_map.data.DataSource.categories
+import com.WooRomero.ut_map.databinding.FragmentCategoryBinding
+import com.WooRomero.ut_map.model.Category
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 /**

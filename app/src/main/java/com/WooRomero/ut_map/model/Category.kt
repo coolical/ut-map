@@ -1,4 +1,4 @@
-package com.example.ut_map.model
+package com.WooRomero.ut_map.model
 
 import androidx.annotation.DrawableRes
 

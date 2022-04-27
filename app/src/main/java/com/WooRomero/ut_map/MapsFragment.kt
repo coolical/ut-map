@@ -1,4 +1,4 @@
-package com.example.ut_map
+package com.WooRomero.ut_map
 
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -18,7 +18,7 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
-import com.example.ut_map.data.DataSource.categories
+import com.WooRomero.ut_map.data.DataSource.categories
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -34,6 +34,7 @@ class MapsFragment : Fragment() {
     private lateinit var map: GoogleMap
 
     //    private lateinit var clusterManager: ClusterManager<ClusterMarker>
+
     @SuppressLint("MissingPermission")
     private var activityResultLauncher: ActivityResultLauncher<Array<String>> =
         registerForActivityResult(
@@ -48,6 +49,7 @@ class MapsFragment : Fragment() {
                 map.isMyLocationEnabled = true
             }
         }
+
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.

@@ -1,8 +1,8 @@
-package com.example.ut_map.data
+package com.WooRomero.ut_map.data
 
-import com.example.ut_map.R
-import com.example.ut_map.model.Category
-import com.example.ut_map.model.Location
+import com.WooRomero.ut_map.R
+import com.WooRomero.ut_map.model.Category
+import com.WooRomero.ut_map.model.Location
 
 object DataSource {
     val locations: List<Location> = listOf(
