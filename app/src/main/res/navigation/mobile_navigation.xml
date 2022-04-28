@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="com.example.ut_map.MapsFragment"
+        android:name="com.WooRomero.ut_map.MapsFragment"
         android:label="@string/title_maps"
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.example.ut_map.AboutFragment"
+        android:name="com.WooRomero.ut_map.AboutFragment"
         android:label="@string/title_about"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.example.ut_map.CategoryFragment"
+        android:name="com.WooRomero.ut_map.CategoryFragment"
         android:label="@string/title_categories"
         tools:layout="@layout/fragment_category_list" />
 </navigation>
