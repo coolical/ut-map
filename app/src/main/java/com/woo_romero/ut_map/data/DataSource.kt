@@ -133,7 +133,7 @@ object DataSource {
         ),
         Location(
             "UT Tower",
-            30.28337591974864, -97.7388566451791,
+            30.28630048514125, -97.73939807401473,
             listOf("landmark", "academic"),
             "https://tower.utexas.edu/"
         ),
@@ -236,7 +236,7 @@ object DataSource {
                 ),
                 Location(
                     "UT Tower",
-                    30.28337591974864, -97.7388566451791,
+                    30.28630048514125, -97.73939807401473,
                     listOf("landmark", "academic"),
                     "https://tower.utexas.edu/"
                 ),
