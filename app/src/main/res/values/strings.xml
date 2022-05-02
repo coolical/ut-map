@@ -7,7 +7,7 @@
     <string name="title_about">About</string>
     <string name="title_categories">Categories</string>
     <string name="about_content">UT Map is a project created in CS 329E Mobile Computing course for our final project to demonstrate what is learned throughout the course. Members include Kevin Woo and Abraham Romero.</string>
-    <string name="about_links">Github:\n https://github.com/coolical/ut-map//</string>
+    <string name="about_links">Github:\nhttps://github.com/coolical/ut-map/\n\nDownload:\nhttps://coolical.itch.io/ut-map</string>
     <string name="button_text">Toggle On/ Off</string>
     <string name="button_text_on">On</string>
     <string name="button_text_off">Off</string>
@@ -19,6 +19,4 @@
     <string name="title_location">Location</string>
     <string name="button_goto">Goto Location</string>
     <string name="favoriteButton">Add to favorites</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
