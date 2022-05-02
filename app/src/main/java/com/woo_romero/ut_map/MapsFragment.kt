@@ -1,4 +1,4 @@
-package com.WooRomero.ut_map
+package com.woo_romero.ut_map
 
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -18,12 +18,12 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
-import com.WooRomero.ut_map.data.DataSource.categories
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.woo_romero.ut_map.data.DataSource.categories
 
 class MapsFragment : Fragment() {
     private var markers: MutableList<Marker?> = mutableListOf()
@@ -71,7 +71,7 @@ class MapsFragment : Fragment() {
             var success = googleMap.setMapStyle(
                 context?.let { MapStyleOptions.loadRawResourceStyle(it, R.raw.style_json) }
             )
-            if (!success){
+            if (!success) {
                 Log.e(String::class.toString(), "Style parsing failed.")
             }
         } catch (e: Exception) {

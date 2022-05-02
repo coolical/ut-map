@@ -1,4 +1,4 @@
-package com.WooRomero.ut_map
+package com.woo_romero.ut_map
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.WooRomero.ut_map.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.woo_romero.ut_map.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.mapsFragment, R.id.aboutFragment, R.id.categoryFragment
+                R.id.mapsFragment, R.id.aboutFragment, R.id.categoryFragment, R.id.locationFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

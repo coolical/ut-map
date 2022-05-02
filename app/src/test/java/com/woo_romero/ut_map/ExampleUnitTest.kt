@@ -1,4 +1,4 @@
-package com.WooRomero.ut_map
+package com.woo_romero.ut_map
 
 import org.junit.Test
 

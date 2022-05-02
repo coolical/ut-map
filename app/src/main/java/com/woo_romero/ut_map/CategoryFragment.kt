@@ -1,4 +1,4 @@
-package com.WooRomero.ut_map
+package com.woo_romero.ut_map
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.WooRomero.ut_map.data.DataSource.categories
+import com.woo_romero.ut_map.data.DataSource.categories
 
 
 /**
