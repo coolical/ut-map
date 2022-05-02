@@ -1,4 +1,4 @@
-package com.WooRomero.ut_map
+package com.woo_romero.ut_map
 
 import android.content.Context
 import android.content.res.Configuration
@@ -8,10 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.WooRomero.ut_map.data.DataSource.categories
-import com.WooRomero.ut_map.databinding.FragmentCategoryBinding
-import com.WooRomero.ut_map.model.Category
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.woo_romero.ut_map.data.DataSource.categories
+import com.woo_romero.ut_map.databinding.FragmentCategoryBinding
+import com.woo_romero.ut_map.model.Category
 
 /**
  * [RecyclerView.Adapter] that can display a category from [categories].

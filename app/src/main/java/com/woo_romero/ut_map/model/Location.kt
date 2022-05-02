@@ -1,4 +1,4 @@
-package com.WooRomero.ut_map.model
+package com.woo_romero.ut_map.model
 
 data class Location(
     val name: String,
@@ -7,5 +7,4 @@ data class Location(
     val tags: List<String>,
     val snippet: String = "",
     var visibility: Boolean = true
-
 )

@@ -12,9 +12,16 @@
         android:title="@string/title_categories" />
 
     <item
+        android:id="@+id/locationFragment"
+        android:checked="true"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/title_search" />
+
+    <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_baseline_help_24"
         android:title="@string/title_about" />
+
 
 
 </menu>

@@ -12,4 +12,13 @@
     <string name="button_text_on">On</string>
     <string name="button_text_off">Off</string>
     <string name="button_onToggle">%1$s has been toggled</string>
+    <string name="title_search">Search</string>
+    <string name="posButton">Goto Location</string>
+    <string name="locationButton">Info</string>
+    <string name="search">Search</string>
+    <string name="title_location">Location</string>
+    <string name="button_goto">Goto Location</string>
+    <string name="favoriteButton">Add to favorites</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
