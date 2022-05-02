@@ -2,7 +2,6 @@ package com.woo_romero.ut_map
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Filter
@@ -10,9 +9,11 @@ import android.widget.Filterable
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.woo_romero.ut_map.data.DataSource.locations
 import com.woo_romero.ut_map.databinding.FragmentLocationBinding
 import com.woo_romero.ut_map.model.Location
+
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
@@ -30,8 +31,7 @@ class MyLocationRecyclerViewAdapter(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ),
-            LayoutInflater.from(parent.context).inflate(R.layout.fragment_location, parent,false)
+            )
         )
 
     }
@@ -40,8 +40,9 @@ class MyLocationRecyclerViewAdapter(
         val item = filteredLocations.get(position)
         holder.nameView.text = item.name
         holder.button.setOnClickListener {
-            val action = LocationFragmentDirections.actionLocationFragmentToLocationProfileFragment()
-
+            val gson = Gson()
+            val action =
+                LocationFragmentDirections.actionLocationFragmentToLocationProfileFragment(gson.toJson(item))
             holder.view.findNavController().navigate(action)
         }
     }
@@ -49,10 +50,11 @@ class MyLocationRecyclerViewAdapter(
 
     override fun getItemCount(): Int = filteredLocations.size
 
-    inner class ViewHolder(binding: FragmentLocationBinding, val view: View) :
+    inner class ViewHolder(binding: FragmentLocationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val nameView: TextView = binding.name
         val button: Button = binding.locationButton
+        val view = binding.root
 
     }
 
@@ -63,22 +65,21 @@ class MyLocationRecyclerViewAdapter(
 //        Log.d("getFilter", filteredLocations.toString())
 //        notifyDataSetChanged()
 //        return filter as Filter
-        return object: Filter(){
+        return object : Filter() {
             override fun performFiltering(p0: CharSequence?): FilterResults {
                 val results = FilterResults()
-                if (p0 != null && p0.length>0){
+                if (p0 != null && p0.length > 0) {
                     val constraint = p0.toString().uppercase()
                     val filteredLocations: MutableList<Location> = mutableListOf()
-                    for(location in originalLocations){
-                        if (location.name.toUpperCase().contains(constraint)){
+                    for (location in originalLocations) {
+                        if (location.name.toUpperCase().contains(constraint)) {
                             filteredLocations.add(location)
                         }
                     }
                     results.count = filteredLocations.count()
                     results.values = filteredLocations
 
-                }
-                else{
+                } else {
                     results.count = originalLocations.size
                     results.values = originalLocations
                 }
@@ -92,7 +93,6 @@ class MyLocationRecyclerViewAdapter(
             }
         }
     }
-
 
 
 }

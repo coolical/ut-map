@@ -13,8 +13,9 @@
 
     <item
         android:id="@+id/locationFragment"
+        android:checked="true"
         android:icon="@drawable/ic_baseline_search_24"
-        android:title="@string/title_search"/>
+        android:title="@string/title_search" />
 
     <item
         android:id="@+id/aboutFragment"

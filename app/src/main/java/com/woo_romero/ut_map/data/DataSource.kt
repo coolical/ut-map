@@ -6,7 +6,7 @@ import com.woo_romero.ut_map.model.Category
 import com.woo_romero.ut_map.model.Location
 
 object DataSource {
-    val position: LatLng = LatLng(30.28337591974864, -97.7388566451791)
+    var position: LatLng = LatLng(30.28337591974864, -97.7388566451791)
     val locations: List<Location> = listOf(
         Location(
             "PETER O'DONNELL JR. BUILDING",

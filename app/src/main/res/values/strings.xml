@@ -17,6 +17,8 @@
     <string name="locationButton">Info</string>
     <string name="search">Search</string>
     <string name="title_location">Location</string>
+    <string name="button_goto">Goto Location</string>
+    <string name="favoriteButton">Add to favorites</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

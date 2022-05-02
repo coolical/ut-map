@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.ColorInt
@@ -23,7 +24,13 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.gson.Gson
 import com.woo_romero.ut_map.data.DataSource.categories
+import com.woo_romero.ut_map.data.DataSource.position
+import com.woo_romero.ut_map.model.Location
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 
 class MapsFragment : Fragment() {
     private var markers: MutableList<Marker?> = mutableListOf()
@@ -32,6 +39,7 @@ class MapsFragment : Fragment() {
         R.color.light_green, R.color.green, R.color.teal, R.color.navy_blue, R.color.blue_grey
     )
     private lateinit var map: GoogleMap
+    private val gson = Gson()
 
     //    private lateinit var clusterManager: ClusterManager<ClusterMarker>
 
@@ -60,6 +68,11 @@ class MapsFragment : Fragment() {
          * user has installed Google Play services and returned to the app.
          */
         map = googleMap
+        val path = context?.filesDir
+        val letDirectory = File(path, "LET")
+        letDirectory.mkdirs()
+        val file = File(letDirectory, "favorites.json")
+
 //        clusterManager = ClusterManager(context, map)
 //        map.setOnCameraIdleListener(clusterManager)
 //        map.setOnMarkerClickListener(clusterManager)
@@ -67,6 +80,34 @@ class MapsFragment : Fragment() {
             marker?.isVisible = false
             marker?.remove()
         }
+        var index = 0
+        val builder = LatLngBounds.Builder()
+        try {
+            val inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
+            val favorites = gson.fromJson(inputAsString, Array<Location>::class.java)
+            for (favorite in favorites){
+                val position = LatLng(favorite.lat, favorite.long)
+                val marker = map.addMarker(
+                    MarkerOptions().position(position).title(favorite.name)
+                        .visible(favorite.visibility).snippet(favorite.snippet).icon(
+                            vectorToBitmap(
+                                R.drawable.ic_baseline_favorite_24,
+                                resources.getColor(colors[index % colors.size])
+                            )
+                        )
+                )
+                markers.add(marker)
+//                clusterManager.addItem(ClusterMarker(location.lat,location.long, location.name, ""))
+                builder.include(position)
+            }
+        }
+        catch (e: java.lang.Exception){
+            FileOutputStream(file).use{
+                val list: List<Location> = listOf()
+                it.write(gson.toJson(list.toTypedArray(), Array<Location>::class.java).toByteArray())
+            }
+        }
+        index++
         try {
             var success = googleMap.setMapStyle(
                 context?.let { MapStyleOptions.loadRawResourceStyle(it, R.raw.style_json) }
@@ -78,8 +119,8 @@ class MapsFragment : Fragment() {
             Log.e(String::class.toString(), "Can't find style. Error: ", e)
         }
 
-        var index = 0
-        val builder = LatLngBounds.Builder()
+
+
         for (category in categories) {
             for (location in category.list) {
                 val position = LatLng(location.lat, location.long)
@@ -100,7 +141,7 @@ class MapsFragment : Fragment() {
         }
         val bounds = builder.build()
         map.setLatLngBoundsForCameraTarget(bounds)
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.center, 15F))
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15F))
     }
 
     override fun onCreateView(

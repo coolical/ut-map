@@ -7,5 +7,4 @@ data class Location(
     val tags: List<String>,
     val snippet: String = "",
     var visibility: Boolean = true
-
 )

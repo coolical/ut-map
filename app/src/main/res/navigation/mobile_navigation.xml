@@ -31,6 +31,13 @@
     <fragment
         android:id="@+id/locationProfileFragment"
         android:name="com.woo_romero.ut_map.LocationProfileFragment"
-        android:label="fragment_location_profile"
-        tools:layout="@layout/fragment_location_profile" />
+        android:label="@string/title_location"
+        tools:layout="@layout/fragment_location_profile" >
+        <argument
+            android:name="location"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_locationProfileFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
 </navigation>
